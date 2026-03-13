@@ -1,38 +1,517 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>BoatLink</title>
-<meta charset="UTF-8">
-<style>
-body{
-font-family: Arial;
-background:#0b1f3a;
-color:white;
-text-align:center;
-padding:50px;
-}
-h1{
-font-size:50px;
-}
-button{
-padding:15px 30px;
-font-size:18px;
-background:#1e90ff;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
-}
-</style>
-</head>
 
-<body>
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoatLink | تأجير قوارب في الكويت - حجز سريع ودفع آمن</title>
+    <meta
+      name="description"
+      content="BoatLink منصة تأجير قوارب في الكويت: احجز في السالمية، مارينا، والخيران مع حجز سريع، دفع آمن، وسياسات إلغاء واضحة."
+    />
+    <meta
+      name="keywords"
+      content="تأجير قوارب الكويت, حجز قارب الكويت, رحلات بحرية الكويت, يخت الكويت, قوارب مارينا, قوارب السالمية"
+    />
+    <meta name="theme-color" content="#0a3d62" />
+    <link rel="canonical" href="https://boatlink.kw/" />
+    <link rel="preconnect" href="https://boatlink.kw" crossorigin />
+    <meta property="og:title" content="BoatLink | تأجير قوارب في الكويت" />
+    <meta
+      property="og:description"
+      content="احجز قاربك في الكويت خلال دقائق مع دفع آمن وسياسات واضحة."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_KW" />
 
-<h1>BoatLink</h1>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "BoatLink",
+        "url": "https://boatlink.kw/",
+        "description": "منصة تأجير قوارب في الكويت تربط الملاك بالمستأجرين.",
+        "telephone": "+96522000000",
+        "areaServed": "KW",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "KW",
+          "addressLocality": "Kuwait City"
+        },
+        "sameAs": ["https://wa.me/96590000000"],
+        "serviceType": ["Boat Rental", "Yacht Booking", "Sea Trips"]
+      }
+    </script>
 
-<p>Boat rental marketplace in Kuwait</p>
+    <style>
+      :root {
+        --bg: #f4f8fc;
+        --surface: #ffffff;
+        --surface-2: #f8fbff;
+        --text: #10243e;
+        --muted: #5c708d;
+        --primary: #0a66c2;
+        --primary-dark: #084b8e;
+        --accent: #14b8a6;
+        --line: #d7e7fb;
+        --shadow: 0 14px 34px rgba(10, 61, 98, 0.1);
+      }
 
-<button>Start Renting</button>
+      * {
+        box-sizing: border-box;
+      }
 
-</body>
-</html>
+      body {
+        margin: 0;
+        font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at 80% -10%, #d8efff 0%, #f4f8fc 40%) no-repeat;
+        line-height: 1.7;
+      }
+
+      .container {
+        width: min(1140px, 92%);
+        margin-inline: auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: rgba(255, 255, 255, 0.88);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+      }
+
+      .topbar-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 68px;
+      }
+
+      .brand {
+        font-weight: 800;
+        color: #0b3b75;
+        letter-spacing: 0.3px;
+      }
+
+      .top-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 12px;
+        padding: 0.68rem 1.1rem;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        font: inherit;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary) 0%, #2487eb 100%);
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(10, 102, 194, 0.25);
+      }
+
+      .btn-secondary {
+        background: #fff;
+        color: var(--primary-dark);
+        border: 1px solid #b9d5f8;
+      }
+
+      header {
+        padding: 2rem 0 2.4rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1rem;
+        background: linear-gradient(140deg, #ecf6ff 0%, #e4f2ff 58%, #f0fcfb 100%);
+        border: 1px solid #d4e9ff;
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: clamp(1rem, 3vw, 2rem);
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(8, 75, 142, 0.1);
+        color: var(--primary-dark);
+        font-size: 0.86rem;
+      }
+
+      h1 {
+        margin: 0.65rem 0 0.7rem;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.25;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        max-width: 640px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1.1rem;
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid #9cc7f5;
+        box-shadow: 0 14px 28px rgba(8, 75, 142, 0.18);
+      }
+
+      main {
+        padding: 0.2rem 0 6rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1rem;
+        box-shadow: 0 8px 20px rgba(16, 36, 62, 0.06);
+      }
+
+      h2,
+      h3 {
+        margin: 0 0 0.55rem;
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .trust ul,
+      .policy-list,
+      .support-list,
+      .ab-list,
+      .seo-links,
+      .blog-list,
+      .perf-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .trust li,
+      .policy-list li,
+      .support-list li,
+      .ab-list li,
+      .seo-links li,
+      .blog-list li,
+      .perf-list li {
+        background: var(--surface-2);
+        border: 1px solid #e2efff;
+        padding: 0.7rem;
+        border-radius: 12px;
+      }
+
+      .search-form,
+      .quick-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 0.8rem;
+        align-items: end;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: var(--muted);
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      input,
+      select {
+        border: 1px solid #b8d8ff;
+        border-radius: 10px;
+        padding: 0.62rem;
+        font: inherit;
+        background: #fff;
+      }
+
+      .results {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .boat-item {
+        border: 1px solid #d9eaff;
+        background: #fff;
+        border-radius: 14px;
+        padding: 0.85rem;
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .steps,
+      .security-grid,
+      .ab-grid,
+      .seo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .step,
+      .ab-card,
+      .seo-card {
+        background: #f8fbff;
+        border: 1px dashed #b4d7ff;
+        border-radius: 13px;
+        padding: 0.85rem;
+      }
+
+      .quick-banner {
+        position: fixed;
+        bottom: 0;
+        inset-inline: 0;
+        background: rgba(6, 40, 76, 0.95);
+        color: #fff;
+        border-top: 1px solid #315b89;
+        z-index: 40;
+      }
+
+      .quick-banner .container {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        flex-wrap: wrap;
+      }
+
+      .quick-banner p {
+        margin: 0;
+      }
+
+      footer {
+        margin-top: 1rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="topbar" aria-label="الشريط العلوي">
+      <div class="container topbar-row">
+        <div class="brand">BoatLink • Kuwait</div>
+        <div class="top-actions">
+          <a class="btn btn-secondary" href="#owner-flow" data-track="top_owner">أضف قاربك</a>
+          <a class="btn btn-primary" href="#booking-flow" data-track="top_book">ابدأ الحجز</a>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="container hero">
+        <div>
+          <span class="badge">منصة تأجير قوارب في الكويت</span>
+          <h1>احجز قاربك في الكويت خلال دقائق</h1>
+          <p class="subtitle">
+            منصة BoatLink تربط أصحاب القوارب بالمستأجرين بسهولة، مع خيارات متنوعة،
+            حجز سريع، ودفع آمن.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#booking-flow" data-track="hero_search">ابحث عن قارب الآن</a>
+            <a class="btn btn-secondary" href="#owner-flow" data-track="hero_owner">أضف قاربك كمؤجّر</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='560' viewBox='0 0 1200 560'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23bde7ff'/%3E%3Cstop offset='1' stop-color='%2398f0df'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='560' fill='url(%23g)'/%3E%3Cpath d='M0 415 C240 360 440 500 680 430 C860 380 1010 470 1200 420 L1200 560 L0 560 Z' fill='%236fc4e8'/%3E%3Cpath d='M350 310 L560 310 L510 366 L395 366 Z' fill='%230b5fa7'/%3E%3Crect x='430' y='262' width='90' height='48' fill='%23073d74'/%3E%3Ctext x='600' y='120' text-anchor='middle' font-size='44' fill='%23073d74' font-family='Tahoma'%3EBoatLink Modern UI%3C/text%3E%3C/svg%3E"
+            alt="تصور لرحلة بحرية عبر BoatLink"
+            width="1200"
+            height="560"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container grid">
+        <section class="card trust" aria-label="عناصر الثقة">
+          <ul>
+            <li>✅ حجز سريع بخطوات بسيطة</li>
+            <li>✅ خيارات قوارب مناسبة للعائلات والرحلات الخاصة</li>
+            <li>✅ سياسات إلغاء ودفع واضحة</li>
+          </ul>
+        </section>
+
+        <section class="card" id="booking-flow" aria-label="رحلة الحجز">
+          <h2>رحلة الحجز (رقم 2)</h2>
+          <p class="muted">فلتر رحلتك أولاً، ثم اختر القارب، ثم أكمل التأكيد والدفع.</p>
+          <form class="search-form" aria-label="فلترة القوارب" data-track-form="search_filter">
+            <label>المنطقة<select><option>السالمية</option><option>مارينا</option><option>الخيران</option></select></label>
+            <label>الحد الأقصى للسعر (د.ك)<input type="number" value="150" min="30" /></label>
+            <label>عدد الأشخاص<select><option>4+</option><option>8+</option><option>12+</option></select></label>
+            <label>مدة الرحلة<select><option>ساعتان</option><option>4 ساعات</option><option>يوم كامل</option></select></label>
+            <button class="btn btn-primary" type="button" data-track="search_results">عرض النتائج</button>
+          </form>
+          <div class="results" aria-label="نتائج بحث القوارب">
+            <article class="boat-item"><strong>قارب عائلي - مارينا</strong><span class="muted">السعة: 8 أشخاص • السعر: 120 د.ك • تقييم 4.8</span><a class="btn btn-secondary" href="#checkout" data-track="select_boat_family">اختر هذا القارب</a></article>
+            <article class="boat-item"><strong>يخت متوسط - السالمية</strong><span class="muted">السعة: 12 شخص • السعر: 145 د.ك • تقييم 4.9</span><a class="btn btn-secondary" href="#checkout" data-track="select_boat_yacht">اختر هذا القارب</a></article>
+          </div>
+        </section>
+
+        <section class="card" id="checkout" aria-label="خطوات التأكيد والدفع">
+          <h2>خطوات إتمام الحجز</h2>
+          <div class="steps">
+            <div class="step"><strong>1) اختيار القارب</strong><br /><span class="muted">اختر القارب المناسب من النتائج.</span></div>
+            <div class="step"><strong>2) التأكيد والدفع</strong><br /><span class="muted">راجع التفاصيل وأكمل الدفع الآمن.</span></div>
+            <div class="step"><strong>3) تأكيد الحجز</strong><br /><span class="muted">استلم تفاصيل الرحلة والتواصل مع المالك.</span></div>
+          </div>
+        </section>
+
+        <section class="card" id="cro" aria-label="تحسين التحويل">
+          <h2>تحسين التحويل (رقم 4)</h2>
+          <div class="ab-grid">
+            <article class="ab-card">
+              <h3>أفكار A/B Test</h3>
+              <ul class="ab-list">
+                <li>🧪 اختبار نص الزر: "احجز الآن" مقابل "ابحث عن قارب".</li>
+                <li>🧪 اختبار ترتيب البطاقة: السعر أولاً مقابل التقييم أولاً.</li>
+                <li>🧪 اختبار نموذج الحجز: مختصر مقابل كامل.</li>
+              </ul>
+            </article>
+            <article class="ab-card" id="quick-request">
+              <h3>طلب سريع للمتردد</h3>
+              <p class="muted">اترك رقمك ونوع الرحلة، وفريقنا يتواصل معك خلال دقائق.</p>
+              <form class="quick-form" aria-label="نموذج الطلب السريع" data-track-form="quick_request">
+                <label>رقم الهاتف<input type="tel" placeholder="+965 9XXX XXXX" /></label>
+                <label>نوع الرحلة<select><option>عائلية</option><option>مناسبة خاصة</option><option>رحلة صيد</option></select></label>
+                <button class="btn btn-primary" type="button" data-track="quick_request_submit">أرسل الطلب السريع</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" id="trust-safety" aria-label="الثقة والأمان">
+          <h2>الثقة والأمان (رقم 3)</h2>
+          <div class="security-grid">
+            <article><h3>توثيق المستخدمين (KYC مبسّط)</h3><ul class="policy-list"><li>🪪 التحقق من الهوية الأساسية قبل أول حجز.</li><li>✅ مراجعة بيانات المالك قبل نشر القارب.</li><li>🔒 حماية المعلومات الحساسة وعدم عرضها علنًا.</li></ul></article>
+            <article><h3>سياسة الدفع والاسترداد</h3><ul class="policy-list"><li>💳 الدفع الآمن عبر بوابة دفع موثوقة.</li><li>↩️ استرداد كامل عند الإلغاء ضمن المدة المسموحة.</li><li>📄 رسوم وخصومات الإلغاء موضحة قبل تأكيد الحجز.</li></ul></article>
+          </div>
+        </section>
+
+        <section class="card" id="seo-local" aria-label="SEO المحلي للكويت">
+          <h2>SEO المحلي (رقم 5)</h2>
+          <div class="seo-grid">
+            <article class="seo-card">
+              <h3>صفحات محلية مقترحة</h3>
+              <ul class="seo-links">
+                <li><a href="#">تأجير قوارب في الكويت</a></li>
+                <li><a href="#">رحلات بحرية عائلية في الكويت</a></li>
+                <li><a href="#">حجز يخت في مارينا الكويت</a></li>
+                <li><a href="#">أفضل قوارب الصيد في الخيران</a></li>
+              </ul>
+            </article>
+            <article class="seo-card">
+              <h3>محتوى مدونة محلي</h3>
+              <ul class="blog-list">
+                <li>📝 أفضل أوقات الرحلات البحرية في الكويت.</li>
+                <li>📝 كيف تختار القارب المناسب لعائلتك؟</li>
+                <li>📝 دليل السلامة قبل استئجار القارب.</li>
+              </ul>
+            </article>
+          </div>
+          <p class="muted">تم دعم الصفحة ببيانات Schema محلية داخل &lt;head&gt; لتقوية الظهور في نتائج البحث المحلية.</p>
+        </section>
+
+        <section class="card" id="performance" aria-label="الأداء التقني">
+          <h2>الأداء التقني (رقم 6)</h2>
+          <ul class="perf-list">
+            <li>⚡ صور الصفحة مجهزة بأبعاد ثابتة و`decoding="async"` لتقليل CLS.</li>
+            <li>⚡ تجهيز التتبع التحليلي لأحداث التحويل الأساسية (عرض، بحث، اختيار، طلب سريع).</li>
+            <li>⚡ مستهدفات Core Web Vitals: LCP أقل من 2.5s، وINP أقل من 200ms، وCLS أقل من 0.1.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="support" aria-label="الدعم والتواصل">
+          <h2>الدعم السريع</h2>
+          <ul class="support-list">
+            <li>📱 واتساب الدعم: <a href="https://wa.me/96590000000">+965 9000 0000</a></li>
+            <li>☎️ الهاتف: <a href="tel:+96522000000">+965 2200 0000</a></li>
+            <li>🕘 أوقات الدعم: يوميًا من 9 صباحًا إلى 11 مساءً</li>
+          </ul>
+        </section>
+
+        <section class="card" id="owner-flow" aria-label="مسار المالك">
+          <h2>لملاك القوارب</h2>
+          <p>اعرض قاربك بسهولة، وحدد الأسعار والتوفر، واستقبل طلبات حجز من عملاء موثوقين.</p>
+        </section>
+      </div>
+
+      <footer>BoatLink © 2026 — UI v2 حديثة لرحلة الحجز والثقة والتحويل.</footer>
+    </main>
+
+    <aside class="quick-banner" aria-label="دعوة تحويل سريعة">
+      <div class="container">
+        <p>جاهز للحجز؟ جرّب الطلب السريع وسنساعدك في اختيار القارب المناسب فورًا.</p>
+        <a class="btn btn-secondary" href="#quick-request" data-track="sticky_quick_request">ابدأ الطلب السريع</a>
+      </div>
+    </aside>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function trackEvent(name, data) {
+        window.dataLayer.push({ event: name, ...data });
+      }
+
+      trackEvent("page_view", { page: "landing_ar_kw_ui_v2" });
+
+      document.querySelectorAll("[data-track]").forEach((element) => {
+        element.addEventListener("click", () => {
+          trackEvent("cta_click", { cta: element.getAttribute("data-track") });
+        });
+      });
+
+      document.querySelectorAll("[data-track-form]").forEach((form) => {
+        form.addEventListener("change", () => {
+          trackEvent("form_interaction", { form: form.getAttribute("data-track-form") });
+        });
+      });
+    </script>
+  </body>
