@@ -15,8 +15,10 @@
         --text: #0e2240;
         --muted: #60708a;
         --primary: #0f5fd8;
+        --primary-dark: #0a4db7;
         --line: #dbe5f4;
         --radius: 18px;
+        --success: #0e9b69;
       }
 
       * {
@@ -77,6 +79,11 @@
       .btn-primary {
         background: var(--primary);
         color: #fff;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
       }
       .btn-ghost {
         background: #fff;
@@ -113,6 +120,15 @@
         padding: clamp(1.2rem, 4vw, 2.2rem);
         display: grid;
         gap: 1.1rem;
+      }
+
+      .hero-badge {
+        width: fit-content;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(5, 24, 56, 0.35);
+        border-radius: 999px;
+        padding: 0.3rem 0.75rem;
+        font-size: 0.88rem;
       }
 
       .hero h1 {
@@ -155,6 +171,20 @@
       section {
         padding: 2.3rem 0;
       }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+      }
+
       h2 {
         margin: 0 0 1rem;
         font-size: clamp(1.45rem, 2.5vw, 2rem);
@@ -174,6 +204,12 @@
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 10px 24px rgba(11, 39, 77, 0.07);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 28px rgba(11, 39, 77, 0.12);
       }
       .card-body {
         padding: 0.9rem;
@@ -205,6 +241,68 @@
         color: #0f3f7a;
       }
 
+      .features-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .feature-pill {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.75rem;
+        font-weight: 600;
+        color: #184577;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .step-card {
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+
+      .step-num {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #eaf2ff;
+        color: var(--primary);
+        font-weight: 900;
+      }
+
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .quote {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1rem;
+      }
+
+      .quote strong {
+        display: block;
+        margin-top: 0.6rem;
+      }
+
+      .safe {
+        color: var(--success);
+        font-weight: 700;
+      }
+
       .app-cta {
         background: linear-gradient(120deg, #0b4cb3, #1e7be9);
         color: #fff;
@@ -233,6 +331,11 @@
       @media (max-width: 900px) {
         .search-panel {
           grid-template-columns: 1fr 1fr;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
 
@@ -264,7 +367,7 @@
       <div class="container hero">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
-          <span>⭐ أكثر من 180,000 عميل يختارون الحجز معنا</span>
+          <span class="hero-badge">⭐ أكثر من 180,000 عميل يختارون الحجز معنا</span>
           <h1>اعثر على القارب المثالي لأي رحلة بحرية</h1>
           <p>
             واجهة حديثة بنفس روح Getmyboat: بحث سريع، نتائج واضحة، وقوارب موثقة للحجز المباشر
@@ -306,19 +409,82 @@
     </header>
 
     <main class="container">
+      <section>
+        <div class="features-strip">
+          <div class="feature-pill">✅ توثيق هوية المالكين قبل عرض القوارب</div>
+          <div class="feature-pill">💳 دفع آمن وسياسة استرجاع واضحة</div>
+          <div class="feature-pill">📞 دعم سريع عبر واتساب والهاتف</div>
+          <div class="feature-pill">🛟 قوارب مجهزة بمعايير السلامة البحرية</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>كيف يتم الحجز عبر BoatLink؟</h2>
+          <p>رحلة حجز واضحة وسريعة خلال دقائق.</p>
+        </div>
+        <div class="steps">
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <h3>اختر القارب المناسب</h3>
+            <p class="muted">حدد الموقع، التاريخ، وعدد الضيوف لعرض أفضل الخيارات المتاحة.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <h3>أكد الحجز والدفع</h3>
+            <p class="muted">راجع التفاصيل والأسعار بوضوح قبل تأكيد الحجز بشكل نهائي.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <h3>استمتع برحلتك البحرية</h3>
+            <p class="muted">تواصل مع المالك مباشرة واحصل على تعليمات الانطلاق بسهولة.</p>
+          </article>
+        </div>
+      </section>
+
       <section id="categories">
-        <h2>تصفح حسب نوع القارب</h2>
+        <div class="section-head">
+          <h2>تصفح حسب نوع القارب</h2>
+          <p>خيارات تناسب العوائل، الأصدقاء، والرحلات الخاصة.</p>
+        </div>
         <div class="category-grid" id="categoryGrid"></div>
       </section>
 
       <section id="boats">
-        <h2>قوارب مميزة للحجز الفوري</h2>
+        <div class="section-head">
+          <h2>قوارب مميزة للحجز الفوري</h2>
+          <p><span class="safe">متاح الآن</span> — تحديث يومي لحالة التوفر والأسعار.</p>
+        </div>
         <div class="boats-grid" id="boatsGrid"></div>
       </section>
 
       <section id="destinations">
-        <h2>وجهات شائعة</h2>
+        <div class="section-head">
+          <h2>وجهات شائعة</h2>
+          <p>أفضل مناطق الانطلاق في الكويت لقضاء يوم بحري مميز.</p>
+        </div>
         <div class="destinations-grid" id="destinationsGrid"></div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>آراء المستخدمين</h2>
+          <p>تجارب حقيقية من مستأجرين استخدموا المنصة.</p>
+        </div>
+        <div class="testimonials">
+          <article class="quote">
+            "الحجز كان سريع جدًا والتواصل مع صاحب القارب ممتاز."
+            <strong>— أحمد، السالمية</strong>
+          </article>
+          <article class="quote">
+            "الأسعار واضحة وما في مفاجآت، وتجربة الدفع كانت سهلة."
+            <strong>— فاطمة، مدينة الكويت</strong>
+          </article>
+          <article class="quote">
+            "أفضل منصة بحرية جربتها محليًا من ناحية التنظيم."
+            <strong>— يوسف، الخيران</strong>
+          </article>
+        </div>
       </section>
 
       <section>
