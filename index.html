@@ -1,7 +1,13 @@
-git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar" dir="rtl"> apt update && apt upgrade -y <head> curl http://localhost:3000 
-<meta charset="UTF-8" /> git add . && git commit -m "update" && git push <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BoatLink | استأجر قاربك مثل Getmyboat</title>
-    <meta name="description" content="واجهة BoatLink مستوحاة من Getmyboat: بحث سريع، تصنيفات، وجهات، وقوارب مميزة للحجز الفوري." />
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoatLink | استأجر قاربك مثل Getmyboat</title>
+    <meta
+      name="description"
+      content="واجهة BoatLink مستوحاة من Getmyboat: بحث سريع، تصنيفات، وجهات، وقوارب مميزة للحجز الفوري."
+    />
     <style>
       :root {
         --bg: #f5f8fd;
@@ -13,7 +19,9 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         --radius: 18px;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
@@ -21,13 +29,16 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         background: var(--bg);
       }
 
-      .container { width: min(1160px, 92%); margin-inline: auto; }
+      .container {
+        width: min(1160px, 92%);
+        margin-inline: auto;
+      }
 
       .topbar {
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(255,255,255,.9);
+        background: rgba(255, 255, 255, 0.9);
         border-bottom: 1px solid var(--line);
         backdrop-filter: blur(10px);
       }
@@ -38,21 +49,40 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         justify-content: space-between;
         gap: 1rem;
       }
-      .brand { font-weight: 900; color: #003b8f; font-size: 1.1rem; }
-      .nav-links { display: flex; gap: 1.1rem; align-items: center; }
-      .nav-links a { text-decoration: none; color: #29486f; font-weight: 600; }
+      .brand {
+        font-weight: 900;
+        color: #003b8f;
+        font-size: 1.1rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #29486f;
+        font-weight: 600;
+      }
 
       .btn {
         border: 0;
         border-radius: 12px;
-        padding: .7rem 1rem;
+        padding: 0.7rem 1rem;
         font: inherit;
         font-weight: 700;
         cursor: pointer;
         text-decoration: none;
       }
-      .btn-primary { background: var(--primary); color: #fff; }
-      .btn-ghost { background: #fff; border: 1px solid #bdd2ef; color: #15457f; }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .btn-ghost {
+        background: #fff;
+        border: 1px solid #bdd2ef;
+        color: #15457f;
+      }
 
       header {
         background: linear-gradient(180deg, #edf5ff 0%, #f5f8fd 80%);
@@ -65,15 +95,15 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         overflow: hidden;
         min-height: 460px;
         border: 1px solid #c7d8f2;
-        box-shadow: 0 26px 48px rgba(5, 40, 90, .12);
+        box-shadow: 0 26px 48px rgba(5, 40, 90, 0.12);
       }
 
       .hero-bg {
         position: absolute;
         inset: 0;
-        background:
-          linear-gradient(180deg, rgba(5,20,45,.1), rgba(4,15,35,.58)),
-          url("https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+        background: linear-gradient(180deg, rgba(5, 20, 45, 0.1), rgba(4, 15, 35, 0.58)),
+          url("https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1600&q=80")
+            center/cover no-repeat;
       }
 
       .hero-content {
@@ -85,38 +115,57 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         gap: 1.1rem;
       }
 
-      .hero h1 { margin: .3rem 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.2; }
-      .hero p { margin: 0; max-width: 650px; color: #dfebff; }
+      .hero h1 {
+        margin: 0.3rem 0;
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        line-height: 1.2;
+      }
+      .hero p {
+        margin: 0;
+        max-width: 650px;
+        color: #dfebff;
+      }
 
       .search-panel {
-        margin-top: .7rem;
+        margin-top: 0.7rem;
         background: #fff;
         border-radius: 16px;
-        padding: .9rem;
+        padding: 0.9rem;
         display: grid;
-        grid-template-columns: repeat(5, minmax(120px,1fr));
-        gap: .7rem;
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+        gap: 0.7rem;
         color: var(--text);
       }
 
-      label { font-size: .84rem; color: var(--muted); display: grid; gap: .3rem; }
-      input, select {
+      label {
+        font-size: 0.84rem;
+        color: var(--muted);
+        display: grid;
+        gap: 0.3rem;
+      }
+      input,
+      select {
         border: 1px solid #ccdbf2;
         border-radius: 10px;
-        padding: .62rem;
+        padding: 0.62rem;
         font: inherit;
         background: #fff;
       }
 
-      section { padding: 2.3rem 0; }
-      h2 { margin: 0 0 1rem; font-size: clamp(1.45rem, 2.5vw, 2rem); }
+      section {
+        padding: 2.3rem 0;
+      }
+      h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.45rem, 2.5vw, 2rem);
+      }
 
       .category-grid,
       .boats-grid,
       .destinations-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: .9rem;
+        gap: 0.9rem;
       }
 
       .card {
@@ -124,11 +173,19 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         border: 1px solid var(--line);
         border-radius: var(--radius);
         overflow: hidden;
-        box-shadow: 0 10px 24px rgba(11, 39, 77, .07);
+        box-shadow: 0 10px 24px rgba(11, 39, 77, 0.07);
       }
-      .card-body { padding: .9rem; }
-      .card h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
-      .muted { color: var(--muted); margin: 0; }
+      .card-body {
+        padding: 0.9rem;
+      }
+      .card h3 {
+        margin: 0 0 0.3rem;
+        font-size: 1.08rem;
+      }
+      .muted {
+        color: var(--muted);
+        margin: 0;
+      }
 
       .thumb {
         aspect-ratio: 4/3;
@@ -137,8 +194,16 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         object-fit: cover;
       }
 
-      .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: .65rem; }
-      .price { font-weight: 900; color: #0f3f7a; }
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.65rem;
+      }
+      .price {
+        font-weight: 900;
+        color: #0f3f7a;
+      }
 
       .app-cta {
         background: linear-gradient(120deg, #0b4cb3, #1e7be9);
@@ -152,20 +217,32 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         flex-wrap: wrap;
       }
 
+      .status {
+        margin-top: 0.8rem;
+        color: #fff;
+        font-weight: 600;
+      }
+
       footer {
         text-align: center;
         color: var(--muted);
         padding: 2rem 0 3rem;
-        font-size: .95rem;
+        font-size: 0.95rem;
       }
 
       @media (max-width: 900px) {
-        .search-panel { grid-template-columns: 1fr 1fr; }
+        .search-panel {
+          grid-template-columns: 1fr 1fr;
+        }
       }
 
       @media (max-width: 600px) {
-        .nav-links a:nth-child(-n+3) { display: none; }
-        .search-panel { grid-template-columns: 1fr; }
+        .nav-links a:nth-child(-n + 3) {
+          display: none;
+        }
+        .search-panel {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -189,23 +266,41 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         <div class="hero-content">
           <span>⭐ أكثر من 180,000 عميل يختارون الحجز معنا</span>
           <h1>اعثر على القارب المثالي لأي رحلة بحرية</h1>
-          <p>واجهة حديثة بنفس روح Getmyboat: بحث سريع، نتائج واضحة، وقوارب موثقة للحجز المباشر في الكويت ودول الخليج.</p>
+          <p>
+            واجهة حديثة بنفس روح Getmyboat: بحث سريع، نتائج واضحة، وقوارب موثقة للحجز المباشر
+            في الكويت ودول الخليج.
+          </p>
 
           <form class="search-panel" id="search">
-            <label>الموقع
-              <input type="text" value="Kuwait City" />
+            <label
+              >الموقع
+              <input id="locationInput" type="text" value="Kuwait City" />
             </label>
-            <label>التاريخ
-              <input type="date" />
+            <label
+              >التاريخ
+              <input id="dateInput" type="date" />
             </label>
-            <label>المدة
-              <select><option>4 ساعات</option><option>6 ساعات</option><option>يوم كامل</option></select>
+            <label
+              >المدة
+              <select id="durationInput">
+                <option value="">أي مدة</option>
+                <option value="4">4 ساعات</option>
+                <option value="6">6 ساعات</option>
+                <option value="8">يوم كامل</option>
+              </select>
             </label>
-            <label>عدد الضيوف
-              <select><option>2-8</option><option>9-15</option><option>16+</option></select>
+            <label
+              >عدد الضيوف
+              <select id="guestsInput">
+                <option value="0">أي عدد</option>
+                <option value="8">2-8</option>
+                <option value="15">9-15</option>
+                <option value="16">16+</option>
+              </select>
             </label>
-            <button class="btn btn-primary" type="button">ابحث الآن</button>
+            <button class="btn btn-primary" type="submit">ابحث الآن</button>
           </form>
+          <p class="status" id="searchStatus">يتم عرض جميع القوارب المميزة حالياً.</p>
         </div>
       </div>
     </header>
@@ -213,37 +308,27 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
     <main class="container">
       <section id="categories">
         <h2>تصفح حسب نوع القارب</h2>
-        <div class="category-grid">
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80" alt="يخت فاخر" /><div class="card-body"><h3>يخوت فاخرة</h3><p class="muted">مناسب للاحتفالات والمناسبات الخاصة.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="قارب صيد" /><div class="card-body"><h3>قوارب صيد</h3><p class="muted">رحلات صيد مزودة بالمعدات الأساسية.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" alt="رحلة عائلية" /><div class="card-body"><h3>رحلات عائلية</h3><p class="muted">قوارب آمنة ومريحة للعائلة.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="أنشطة مائية" /><div class="card-body"><h3>أنشطة مائية</h3><p class="muted">جت سكي، سنوركل، وبرامج بحرية ممتعة.</p></div></article>
-        </div>
+        <div class="category-grid" id="categoryGrid"></div>
       </section>
 
       <section id="boats">
         <h2>قوارب مميزة للحجز الفوري</h2>
-        <div class="boats-grid">
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?auto=format&fit=crop&w=1000&q=80" alt="يخت 42 قدم" /><div class="card-body"><h3>يخت 42 قدم • مارينا</h3><p class="muted">4.9 ★ (112 تقييم) • حتى 12 ضيف</p><div class="price-row"><span class="price">من 120 د.ك / ساعة</span><a class="btn btn-ghost" href="#">عرض التفاصيل</a></div></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1000&q=80" alt="قارب عائلي" /><div class="card-body"><h3>قارب عائلي • السالمية</h3><p class="muted">4.8 ★ (73 تقييم) • حتى 8 ضيوف</p><div class="price-row"><span class="price">من 85 د.ك / ساعة</span><a class="btn btn-ghost" href="#">عرض التفاصيل</a></div></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80" alt="رحلة صيد" /><div class="card-body"><h3>رحلة صيد • الخيران</h3><p class="muted">4.7 ★ (51 تقييم) • حتى 10 ضيوف</p><div class="price-row"><span class="price">من 95 د.ك / ساعة</span><a class="btn btn-ghost" href="#">عرض التفاصيل</a></div></div></article>
-        </div>
+        <div class="boats-grid" id="boatsGrid"></div>
       </section>
 
       <section id="destinations">
         <h2>وجهات شائعة</h2>
-        <div class="destinations-grid">
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=900&q=80" alt="السالمية" /><div class="card-body"><h3>السالمية</h3><p class="muted">أفضل الرحلات القصيرة وغروب الشمس.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80" alt="مارينا" /><div class="card-body"><h3>مارينا</h3><p class="muted">قوارب فاخرة وخيارات VIP.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80" alt="الخيران" /><div class="card-body"><h3>الخيران</h3><p class="muted">جلسات بحرية هادئة ورحلات يوم كامل.</p></div></article>
-        </div>
+        <div class="destinations-grid" id="destinationsGrid"></div>
       </section>
 
       <section>
         <div class="app-cta">
           <div>
             <h2>نزّل تطبيق BoatLink</h2>
-            <p>احجز بسرعة، تحدث مع المالك مباشرة، وادفع بأمان — تجربة قريبة جدًا من منصات الحجز العالمية.</p>
+            <p>
+              احجز بسرعة، تحدث مع المالك مباشرة، وادفع بأمان — تجربة قريبة جدًا من منصات الحجز
+              العالمية.
+            </p>
           </div>
           <div>
             <a class="btn btn-ghost" href="#">App Store</a>
@@ -254,5 +339,174 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
     </main>
 
     <footer>BoatLink © 2026 — واجهة Landing مستوحاة من Getmyboat.</footer>
+
+    <script>
+      const mockData = {
+        categories: [
+          {
+            title: "يخوت فاخرة",
+            description: "مناسب للاحتفالات والمناسبات الخاصة.",
+            image:
+              "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
+            alt: "يخت فاخر",
+          },
+          {
+            title: "قوارب صيد",
+            description: "رحلات صيد مزودة بالمعدات الأساسية.",
+            image:
+              "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80",
+            alt: "قارب صيد",
+          },
+          {
+            title: "رحلات عائلية",
+            description: "قوارب آمنة ومريحة للعائلة.",
+            image:
+              "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80",
+            alt: "رحلة عائلية",
+          },
+          {
+            title: "أنشطة مائية",
+            description: "جت سكي، سنوركل، وبرامج بحرية ممتعة.",
+            image:
+              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
+            alt: "أنشطة مائية",
+          },
+        ],
+        boats: [
+          {
+            name: "يخت 42 قدم",
+            area: "مارينا",
+            rating: 4.9,
+            reviews: 112,
+            guests: 12,
+            durationHours: 4,
+            pricePerHour: 120,
+            image:
+              "https://images.unsplash.com/photo-1571624436279-b272aff752b5?auto=format&fit=crop&w=1000&q=80",
+          },
+          {
+            name: "قارب عائلي",
+            area: "السالمية",
+            rating: 4.8,
+            reviews: 73,
+            guests: 8,
+            durationHours: 6,
+            pricePerHour: 85,
+            image:
+              "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1000&q=80",
+          },
+          {
+            name: "رحلة صيد",
+            area: "الخيران",
+            rating: 4.7,
+            reviews: 51,
+            guests: 10,
+            durationHours: 8,
+            pricePerHour: 95,
+            image:
+              "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
+          },
+          {
+            name: "يخت VIP 55 قدم",
+            area: "مدينة الكويت",
+            rating: 5.0,
+            reviews: 28,
+            guests: 16,
+            durationHours: 6,
+            pricePerHour: 190,
+            image:
+              "https://images.unsplash.com/photo-1562281302-809108fd533c?auto=format&fit=crop&w=1000&q=80",
+          },
+        ],
+        destinations: [
+          {
+            title: "السالمية",
+            description: "أفضل الرحلات القصيرة وغروب الشمس.",
+            image:
+              "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=900&q=80",
+            alt: "السالمية",
+          },
+          {
+            title: "مارينا",
+            description: "قوارب فاخرة وخيارات VIP.",
+            image:
+              "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80",
+            alt: "مارينا",
+          },
+          {
+            title: "الخيران",
+            description: "جلسات بحرية هادئة ورحلات يوم كامل.",
+            image:
+              "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80",
+            alt: "الخيران",
+          },
+        ],
+      };
+
+      const categoryGrid = document.getElementById("categoryGrid");
+      const boatsGrid = document.getElementById("boatsGrid");
+      const destinationsGrid = document.getElementById("destinationsGrid");
+      const searchStatus = document.getElementById("searchStatus");
+      const searchForm = document.getElementById("search");
+
+      const cardTemplate = ({ title, description, image, alt }) => `
+        <article class="card">
+          <img class="thumb" src="${image}" alt="${alt}" loading="lazy" />
+          <div class="card-body">
+            <h3>${title}</h3>
+            <p class="muted">${description}</p>
+          </div>
+        </article>
+      `;
+
+      const boatCardTemplate = (boat) => `
+        <article class="card">
+          <img class="thumb" src="${boat.image}" alt="${boat.name}" loading="lazy" />
+          <div class="card-body">
+            <h3>${boat.name} • ${boat.area}</h3>
+            <p class="muted">${boat.rating} ★ (${boat.reviews} تقييم) • حتى ${boat.guests} ضيف</p>
+            <div class="price-row">
+              <span class="price">من ${boat.pricePerHour} د.ك / ساعة</span>
+              <a class="btn btn-ghost" href="#">عرض التفاصيل</a>
+            </div>
+          </div>
+        </article>
+      `;
+
+      function renderBaseSections() {
+        categoryGrid.innerHTML = mockData.categories.map(cardTemplate).join("");
+        destinationsGrid.innerHTML = mockData.destinations.map(cardTemplate).join("");
+        renderBoats(mockData.boats);
+      }
+
+      function renderBoats(boats) {
+        if (!boats.length) {
+          boatsGrid.innerHTML = '<p class="muted">لا توجد نتائج مطابقة لخيارات البحث الحالية.</p>';
+          return;
+        }
+        boatsGrid.innerHTML = boats.map(boatCardTemplate).join("");
+      }
+
+      function applyFilters(event) {
+        event.preventDefault();
+
+        const location = document.getElementById("locationInput").value.trim().toLowerCase();
+        const minGuests = Number(document.getElementById("guestsInput").value);
+        const duration = Number(document.getElementById("durationInput").value || 0);
+
+        const filtered = mockData.boats.filter((boat) => {
+          const locationMatch = !location || boat.area.toLowerCase().includes(location);
+          const guestsMatch = !minGuests || boat.guests >= minGuests;
+          const durationMatch = !duration || boat.durationHours >= duration;
+          return locationMatch && guestsMatch && durationMatch;
+        });
+
+        renderBoats(filtered);
+        searchStatus.textContent = `تم العثور على ${filtered.length} قارب مطابق لبحثك.`;
+      }
+
+      renderBaseSections();
+      searchForm.addEventListener("submit", applyFilters);
+    </script>
   </body>
 </html>
