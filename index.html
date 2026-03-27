@@ -3,676 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BoatLink | استأجر قاربك مثل Getmyboat</title>
-    <meta
-      name="description"
-      content="واجهة BoatLink مستوحاة من Getmyboat: بحث سريع، تصنيفات، وجهات، وقوارب مميزة للحجز الفوري."
-    />
-    <style>
-      :root {
-        --bg: #f5f8fd;
-        --surface: #ffffff;
-        --text: #0e2240;
-        --muted: #60708a;
-        --primary: #0f5fd8;
-        --primary-dark: #0a4db7;
-        --line: #dbe5f4;
-        --radius: 18px;
-        --success: #0e9b69;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
-        color: var(--text);
-        background: var(--bg);
-      }
-
-      .container {
-        width: min(1160px, 92%);
-        margin-inline: auto;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(255, 255, 255, 0.9);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(10px);
-      }
-      .topbar-row {
-        min-height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-      }
-      .brand {
-        font-weight: 900;
-        color: #003b8f;
-        font-size: 1.1rem;
-      }
-      .nav-links {
-        display: flex;
-        gap: 1.1rem;
-        align-items: center;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: #29486f;
-        font-weight: 600;
-      }
-
-      .btn {
-        border: 0;
-        border-radius: 12px;
-        padding: 0.7rem 1rem;
-        font: inherit;
-        font-weight: 700;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
-        transition: background 0.2s ease, transform 0.2s ease;
-      }
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-1px);
-      }
-      .btn-ghost {
-        background: #fff;
-        border: 1px solid #bdd2ef;
-        color: #15457f;
-      }
-
-      header {
-        background: linear-gradient(180deg, #edf5ff 0%, #f5f8fd 80%);
-        padding: 1.2rem 0 2.4rem;
-      }
-
-      .hero {
-        position: relative;
-        border-radius: 28px;
-        overflow: hidden;
-        min-height: 460px;
-        border: 1px solid #c7d8f2;
-        box-shadow: 0 26px 48px rgba(5, 40, 90, 0.12);
-      }
-
-      .hero-bg {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(5, 20, 45, 0.1), rgba(4, 15, 35, 0.58)),
-          url("https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1600&q=80")
-            center/cover no-repeat;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        padding: clamp(1.2rem, 4vw, 2.2rem);
-        display: grid;
-        gap: 1.1rem;
-      }
-
-      .hero-badge {
-        width: fit-content;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        background: rgba(5, 24, 56, 0.35);
-        border-radius: 999px;
-        padding: 0.3rem 0.75rem;
-        font-size: 0.88rem;
-      }
-
-      .hero h1 {
-        margin: 0.3rem 0;
-        font-size: clamp(2rem, 4vw, 3.1rem);
-        line-height: 1.2;
-      }
-      .hero p {
-        margin: 0;
-        max-width: 650px;
-        color: #dfebff;
-      }
-
-      .search-panel {
-        margin-top: 0.7rem;
-        background: #fff;
-        border-radius: 16px;
-        padding: 0.9rem;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(120px, 1fr));
-        gap: 0.7rem;
-        color: var(--text);
-      }
-
-      label {
-        font-size: 0.84rem;
-        color: var(--muted);
-        display: grid;
-        gap: 0.3rem;
-      }
-      input,
-      select {
-        border: 1px solid #ccdbf2;
-        border-radius: 10px;
-        padding: 0.62rem;
-        font: inherit;
-        background: #fff;
-      }
-
-      section {
-        padding: 2.3rem 0;
-      }
-
-      .section-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .section-head p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      h2 {
-        margin: 0 0 1rem;
-        font-size: clamp(1.45rem, 2.5vw, 2rem);
-      }
-
-      .category-grid,
-      .boats-grid,
-      .destinations-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 0.9rem;
-      }
-
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 10px 24px rgba(11, 39, 77, 0.07);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 28px rgba(11, 39, 77, 0.12);
-      }
-      .card-body {
-        padding: 0.9rem;
-      }
-      .card h3 {
-        margin: 0 0 0.3rem;
-        font-size: 1.08rem;
-      }
-      .muted {
-        color: var(--muted);
-        margin: 0;
-      }
-
-      .thumb {
-        aspect-ratio: 4/3;
-        background: #dbe9fb;
-        width: 100%;
-        object-fit: cover;
-      }
-
-      .price-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 0.65rem;
-      }
-      .price {
-        font-weight: 900;
-        color: #0f3f7a;
-      }
-
-      .features-strip {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 0.8rem;
-      }
-
-      .feature-pill {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 0.75rem;
-        font-weight: 600;
-        color: #184577;
-      }
-
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 0.8rem;
-      }
-
-      .step-card {
-        padding: 1rem;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-      }
-
-      .step-num {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: #eaf2ff;
-        color: var(--primary);
-        font-weight: 900;
-      }
-
-      .testimonials {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 0.8rem;
-      }
-
-      .quote {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 1rem;
-      }
-
-      .quote strong {
-        display: block;
-        margin-top: 0.6rem;
-      }
-
-      .safe {
-        color: var(--success);
-        font-weight: 700;
-      }
-
-      .app-cta {
-        background: linear-gradient(120deg, #0b4cb3, #1e7be9);
-        color: #fff;
-        border-radius: 22px;
-        padding: 1.2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .status {
-        margin-top: 0.8rem;
-        color: #fff;
-        font-weight: 600;
-      }
-
-      footer {
-        text-align: center;
-        color: var(--muted);
-        padding: 2rem 0 3rem;
-        font-size: 0.95rem;
-      }
-
-      @media (max-width: 900px) {
-        .search-panel {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .section-head {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .nav-links a:nth-child(-n + 3) {
-          display: none;
-        }
-        .search-panel {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <title>BoatLink | احجز قاربك الآن</title>
+    <meta name="description" content="منصة BoatLink لحجز القوارب في الكويت: بحث، اختيار، دفع، وتأكيد فوري." />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <nav class="topbar">
       <div class="container topbar-row">
         <div class="brand">BoatLink</div>
         <div class="nav-links">
-          <a href="#boats">القوارب</a>
-          <a href="#destinations">الوجهات</a>
-          <a href="#categories">الفئات</a>
-          <a class="btn btn-ghost" href="#">أضف قاربك</a>
-          <a class="btn btn-primary" href="#">تسجيل الدخول</a>
+          <a href="/index.html#searchSection">ابحث</a>
+          <a href="/index.html#boatsSection">القوارب</a>
+          <a href="/index.html#checkoutSection">الحجز والدفع</a>
+          <a class="btn btn-ghost" href="/boat.html?id=boat-1">تفاصيل قارب</a>
         </div>
       </div>
     </nav>
 
-    <header>
-      <div class="container hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-content">
-          <span class="hero-badge">⭐ أكثر من 180,000 عميل يختارون الحجز معنا</span>
-          <h1>اعثر على القارب المثالي لأي رحلة بحرية</h1>
-          <p>
-            واجهة حديثة بنفس روح Getmyboat: بحث سريع، نتائج واضحة، وقوارب موثقة للحجز المباشر
-            في الكويت ودول الخليج.
-          </p>
-
-          <form class="search-panel" id="search">
-            <label
-              >الموقع
-              <input id="locationInput" type="text" value="Kuwait City" />
-            </label>
-            <label
-              >التاريخ
-              <input id="dateInput" type="date" />
-            </label>
-            <label
-              >المدة
-              <select id="durationInput">
-                <option value="">أي مدة</option>
-                <option value="4">4 ساعات</option>
-                <option value="6">6 ساعات</option>
-                <option value="8">يوم كامل</option>
-              </select>
-            </label>
-            <label
-              >عدد الضيوف
-              <select id="guestsInput">
-                <option value="0">أي عدد</option>
-                <option value="8">2-8</option>
-                <option value="15">9-15</option>
-                <option value="16">16+</option>
-              </select>
-            </label>
-            <button class="btn btn-primary" type="submit">ابحث الآن</button>
-          </form>
-          <p class="status" id="searchStatus">يتم عرض جميع القوارب المميزة حالياً.</p>
-        </div>
-      </div>
-    </header>
-
     <main class="container">
-      <section>
-        <div class="features-strip">
-          <div class="feature-pill">✅ توثيق هوية المالكين قبل عرض القوارب</div>
-          <div class="feature-pill">💳 دفع آمن وسياسة استرجاع واضحة</div>
-          <div class="feature-pill">📞 دعم سريع عبر واتساب والهاتف</div>
-          <div class="feature-pill">🛟 قوارب مجهزة بمعايير السلامة البحرية</div>
+      <section class="hero">
+        <h1>احجز قاربك في دقائق</h1>
+        <p>تدفق حجز كامل: بحث ← اختيار ← تأكيد ← دفع ← تأكيد نهائي.</p>
+      </section>
+
+      <section id="authSection" class="panel">
+        <h2>تسجيل/دخول (مستأجر أو مالك)</h2>
+        <div class="grid-two">
+          <form id="registerForm" class="card">
+            <h3>إنشاء حساب</h3>
+            <label>الاسم <input name="name" required /></label>
+            <label>البريد <input type="email" name="email" required /></label>
+            <label>كلمة المرور <input type="password" name="password" required /></label>
+            <label>النوع
+              <select name="role" required>
+                <option value="renter">مستأجر</option>
+                <option value="owner">مالك</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">تسجيل</button>
+          </form>
+
+          <form id="loginForm" class="card">
+            <h3>تسجيل الدخول</h3>
+            <label>البريد <input type="email" name="email" required /></label>
+            <label>كلمة المرور <input type="password" name="password" required /></label>
+            <button class="btn btn-primary" type="submit">دخول</button>
+            <p id="authStatus" class="status"></p>
+          </form>
         </div>
       </section>
 
-      <section>
-        <div class="section-head">
-          <h2>كيف يتم الحجز عبر BoatLink؟</h2>
-          <p>رحلة حجز واضحة وسريعة خلال دقائق.</p>
-        </div>
-        <div class="steps">
-          <article class="step-card">
-            <div class="step-num">1</div>
-            <h3>اختر القارب المناسب</h3>
-            <p class="muted">حدد الموقع، التاريخ، وعدد الضيوف لعرض أفضل الخيارات المتاحة.</p>
-          </article>
-          <article class="step-card">
-            <div class="step-num">2</div>
-            <h3>أكد الحجز والدفع</h3>
-            <p class="muted">راجع التفاصيل والأسعار بوضوح قبل تأكيد الحجز بشكل نهائي.</p>
-          </article>
-          <article class="step-card">
-            <div class="step-num">3</div>
-            <h3>استمتع برحلتك البحرية</h3>
-            <p class="muted">تواصل مع المالك مباشرة واحصل على تعليمات الانطلاق بسهولة.</p>
-          </article>
-        </div>
+      <section id="searchSection" class="panel">
+        <h2>1) البحث</h2>
+        <form id="searchForm" class="search-grid card">
+          <label>الموقع <input type="text" name="location" placeholder="مارينا" /></label>
+          <label>عدد الضيوف
+            <select name="guests">
+              <option value="">أي عدد</option>
+              <option value="8">8+</option>
+              <option value="12">12+</option>
+              <option value="16">16+</option>
+            </select>
+          </label>
+          <label>المدة
+            <select name="duration">
+              <option value="">أي مدة</option>
+              <option value="4">4 ساعات+</option>
+              <option value="6">6 ساعات+</option>
+              <option value="8">8 ساعات+</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">بحث</button>
+        </form>
       </section>
 
-      <section id="categories">
-        <div class="section-head">
-          <h2>تصفح حسب نوع القارب</h2>
-          <p>خيارات تناسب العوائل، الأصدقاء، والرحلات الخاصة.</p>
-        </div>
-        <div class="category-grid" id="categoryGrid"></div>
+      <section id="boatsSection" class="panel">
+        <h2>2) اختيار القارب</h2>
+        <div id="boatsGrid" class="grid-three"></div>
       </section>
 
-      <section id="boats">
-        <div class="section-head">
-          <h2>قوارب مميزة للحجز الفوري</h2>
-          <p><span class="safe">متاح الآن</span> — تحديث يومي لحالة التوفر والأسعار.</p>
-        </div>
-        <div class="boats-grid" id="boatsGrid"></div>
-      </section>
+      <section id="checkoutSection" class="panel">
+        <h2>3) التأكيد والدفع</h2>
+        <form id="bookingForm" class="card">
+          <p>القارب المختار: <strong id="selectedBoat">لم يتم اختيار قارب بعد</strong></p>
+          <input type="hidden" name="boatId" id="boatId" />
 
-      <section id="destinations">
-        <div class="section-head">
-          <h2>وجهات شائعة</h2>
-          <p>أفضل مناطق الانطلاق في الكويت لقضاء يوم بحري مميز.</p>
-        </div>
-        <div class="destinations-grid" id="destinationsGrid"></div>
-      </section>
+          <label>تاريخ الرحلة <input type="date" name="date" required /></label>
+          <label>عدد الساعات <input type="number" name="hours" min="1" value="4" required /></label>
+          <label>عدد الضيوف <input type="number" name="guests" min="1" value="6" required /></label>
+          <label>طريقة الدفع
+            <select name="paymentMethod" required>
+              <option value="knet">KNET</option>
+              <option value="visa">Visa/Mastercard</option>
+            </select>
+          </label>
 
-      <section>
-        <div class="section-head">
-          <h2>آراء المستخدمين</h2>
-          <p>تجارب حقيقية من مستأجرين استخدموا المنصة.</p>
-        </div>
-        <div class="testimonials">
-          <article class="quote">
-            "الحجز كان سريع جدًا والتواصل مع صاحب القارب ممتاز."
-            <strong>— أحمد، السالمية</strong>
-          </article>
-          <article class="quote">
-            "الأسعار واضحة وما في مفاجآت، وتجربة الدفع كانت سهلة."
-            <strong>— فاطمة، مدينة الكويت</strong>
-          </article>
-          <article class="quote">
-            "أفضل منصة بحرية جربتها محليًا من ناحية التنظيم."
-            <strong>— يوسف، الخيران</strong>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <div class="app-cta">
-          <div>
-            <h2>نزّل تطبيق BoatLink</h2>
-            <p>
-              احجز بسرعة، تحدث مع المالك مباشرة، وادفع بأمان — تجربة قريبة جدًا من منصات الحجز
-              العالمية.
-            </p>
+          <div class="policy-box">
+            <h3>سياسة الإلغاء والاسترجاع</h3>
+            <ul>
+              <li>استرجاع 100% عند الإلغاء قبل 48 ساعة.</li>
+              <li>استرجاع 50% عند الإلغاء خلال 24–48 ساعة.</li>
+              <li>لا يوجد استرجاع عند الإلغاء قبل أقل من 24 ساعة.</li>
+            </ul>
+            <label><input type="checkbox" name="acceptPolicy" required /> أوافق على سياسة الإلغاء والاسترجاع.</label>
           </div>
-          <div>
-            <a class="btn btn-ghost" href="#">App Store</a>
-            <a class="btn btn-ghost" href="#">Google Play</a>
-          </div>
-        </div>
+
+          <button class="btn btn-primary" type="submit">تأكيد الحجز والدفع</button>
+          <p id="bookingStatus" class="status"></p>
+        </form>
       </section>
     </main>
 
-    <footer>BoatLink © 2026 — واجهة Landing مستوحاة من Getmyboat.</footer>
-
-    <script>
-      const mockData = {
-        categories: [
-          {
-            title: "يخوت فاخرة",
-            description: "مناسب للاحتفالات والمناسبات الخاصة.",
-            image:
-              "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
-            alt: "يخت فاخر",
-          },
-          {
-            title: "قوارب صيد",
-            description: "رحلات صيد مزودة بالمعدات الأساسية.",
-            image:
-              "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80",
-            alt: "قارب صيد",
-          },
-          {
-            title: "رحلات عائلية",
-            description: "قوارب آمنة ومريحة للعائلة.",
-            image:
-              "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80",
-            alt: "رحلة عائلية",
-          },
-          {
-            title: "أنشطة مائية",
-            description: "جت سكي، سنوركل، وبرامج بحرية ممتعة.",
-            image:
-              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
-            alt: "أنشطة مائية",
-          },
-        ],
-        boats: [
-          {
-            name: "يخت 42 قدم",
-            area: "مارينا",
-            rating: 4.9,
-            reviews: 112,
-            guests: 12,
-            durationHours: 4,
-            pricePerHour: 120,
-            image:
-              "https://images.unsplash.com/photo-1571624436279-b272aff752b5?auto=format&fit=crop&w=1000&q=80",
-          },
-          {
-            name: "قارب عائلي",
-            area: "السالمية",
-            rating: 4.8,
-            reviews: 73,
-            guests: 8,
-            durationHours: 6,
-            pricePerHour: 85,
-            image:
-              "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1000&q=80",
-          },
-          {
-            name: "رحلة صيد",
-            area: "الخيران",
-            rating: 4.7,
-            reviews: 51,
-            guests: 10,
-            durationHours: 8,
-            pricePerHour: 95,
-            image:
-              "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80",
-          },
-          {
-            name: "يخت VIP 55 قدم",
-            area: "مدينة الكويت",
-            rating: 5.0,
-            reviews: 28,
-            guests: 16,
-            durationHours: 6,
-            pricePerHour: 190,
-            image:
-              "https://images.unsplash.com/photo-1562281302-809108fd533c?auto=format&fit=crop&w=1000&q=80",
-          },
-        ],
-        destinations: [
-          {
-            title: "السالمية",
-            description: "أفضل الرحلات القصيرة وغروب الشمس.",
-            image:
-              "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=900&q=80",
-            alt: "السالمية",
-          },
-          {
-            title: "مارينا",
-            description: "قوارب فاخرة وخيارات VIP.",
-            image:
-              "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80",
-            alt: "مارينا",
-          },
-          {
-            title: "الخيران",
-            description: "جلسات بحرية هادئة ورحلات يوم كامل.",
-            image:
-              "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80",
-            alt: "الخيران",
-          },
-        ],
-      };
-
-      const categoryGrid = document.getElementById("categoryGrid");
-      const boatsGrid = document.getElementById("boatsGrid");
-      const destinationsGrid = document.getElementById("destinationsGrid");
-      const searchStatus = document.getElementById("searchStatus");
-      const searchForm = document.getElementById("search");
-
-      const cardTemplate = ({ title, description, image, alt }) => `
-        <article class="card">
-          <img class="thumb" src="${image}" alt="${alt}" loading="lazy" />
-          <div class="card-body">
-            <h3>${title}</h3>
-            <p class="muted">${description}</p>
-          </div>
-        </article>
-      `;
-
-      const boatCardTemplate = (boat) => `
-        <article class="card">
-          <img class="thumb" src="${boat.image}" alt="${boat.name}" loading="lazy" />
-          <div class="card-body">
-            <h3>${boat.name} • ${boat.area}</h3>
-            <p class="muted">${boat.rating} ★ (${boat.reviews} تقييم) • حتى ${boat.guests} ضيف</p>
-            <div class="price-row">
-              <span class="price">من ${boat.pricePerHour} د.ك / ساعة</span>
-              <a class="btn btn-ghost" href="#">عرض التفاصيل</a>
-            </div>
-          </div>
-        </article>
-      `;
-
-      function renderBaseSections() {
-        categoryGrid.innerHTML = mockData.categories.map(cardTemplate).join("");
-        destinationsGrid.innerHTML = mockData.destinations.map(cardTemplate).join("");
-        renderBoats(mockData.boats);
-      }
-
-      function renderBoats(boats) {
-        if (!boats.length) {
-          boatsGrid.innerHTML = '<p class="muted">لا توجد نتائج مطابقة لخيارات البحث الحالية.</p>';
-          return;
-        }
-        boatsGrid.innerHTML = boats.map(boatCardTemplate).join("");
-      }
-
-      function applyFilters(event) {
-        event.preventDefault();
-
-        const location = document.getElementById("locationInput").value.trim().toLowerCase();
-        const minGuests = Number(document.getElementById("guestsInput").value);
-        const duration = Number(document.getElementById("durationInput").value || 0);
-
-        const filtered = mockData.boats.filter((boat) => {
-          const locationMatch = !location || boat.area.toLowerCase().includes(location);
-          const guestsMatch = !minGuests || boat.guests >= minGuests;
-          const durationMatch = !duration || boat.durationHours >= duration;
-          return locationMatch && guestsMatch && durationMatch;
-        });
-
-        renderBoats(filtered);
-        searchStatus.textContent = `تم العثور على ${filtered.length} قارب مطابق لبحثك.`;
-      }
-
-      renderBaseSections();
-      searchForm.addEventListener("submit", applyFilters);
-    </script>
+    <script src="/app.js"></script>
   </body>
 </html>
