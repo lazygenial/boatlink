@@ -1,0 +1,38 @@
+[
+  {
+    "id": "boat-1",
+    "name": "يخت 42 قدم",
+    "area": "مارينا",
+    "guests": 12,
+    "durationHours": 4,
+    "pricePerHour": 120,
+    "rating": 4.9,
+    "reviews": 112,
+    "image": "https://images.unsplash.com/photo-1571624436279-b272aff752b5?auto=format&fit=crop&w=1200&q=80",
+    "description": "يخت فاخر مناسب للمناسبات والجلسات البحرية الخاصة."
+  },
+  {
+    "id": "boat-2",
+    "name": "قارب عائلي",
+    "area": "السالمية",
+    "guests": 8,
+    "durationHours": 6,
+    "pricePerHour": 85,
+    "rating": 4.8,
+    "reviews": 73,
+    "image": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80",
+    "description": "خيار ممتاز للعائلات مع وسائل راحة كاملة."
+  },
+  {
+    "id": "boat-3",
+    "name": "رحلة صيد",
+    "area": "الخيران",
+    "guests": 10,
+    "durationHours": 8,
+    "pricePerHour": 95,
+    "rating": 4.7,
+    "reviews": 51,
+    "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    "description": "قارب مجهز بالكامل لرحلات الصيد."
+  }
+]

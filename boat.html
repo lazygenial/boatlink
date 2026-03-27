@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoatLink | تفاصيل القارب</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel">
+        <a class="btn btn-ghost" href="/index.html">العودة للرئيسية</a>
+        <h1>تفاصيل القارب</h1>
+        <article id="boatDetails" class="card">جاري التحميل...</article>
+      </section>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const details = document.getElementById('boatDetails');
+
+      async function loadBoat() {
+        if (!id) {
+          details.textContent = 'معرّف القارب غير صالح.';
+          return;
+        }
+        const res = await fetch(`/api/boats/${id}`);
+        if (!res.ok) {
+          details.textContent = 'القارب غير موجود.';
+          return;
+        }
+        const boat = await res.json();
+        details.innerHTML = `
+          <img class="thumb" src="${boat.image}" alt="${boat.name}" />
+          <h2>${boat.name}</h2>
+          <p>المنطقة: ${boat.area}</p>
+          <p>السعة: حتى ${boat.guests} ضيف</p>
+          <p>المدة المقترحة: ${boat.durationHours} ساعات</p>
+          <p>السعر: ${boat.pricePerHour} د.ك / ساعة</p>
+          <p>${boat.description}</p>
+          <a class="btn btn-primary" href="/index.html#checkoutSection">احجز الآن</a>
+        `;
+      }
+
+      loadBoat();
+    </script>
+  </body>
+</html>
