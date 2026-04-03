@@ -1,134 +1,288 @@
-git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar" dir="rtl"> apt update && apt upgrade -y <head> curl http://localhost:3000 
-<meta charset="UTF-8" /> git add . && git commit -m "update" && git push <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BoatLink | استأجر قاربك مثل Getmyboat</title>
-    <meta name="description" content="واجهة BoatLink مستوحاة من Getmyboat: بحث سريع، تصنيفات، وجهات، وقوارب مميزة للحجز الفوري." />
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoatLink | استأجر قاربك بسهولة</title>
+    <meta
+      name="description"
+      content="BoatLink: منصة عربية حديثة لحجز القوارب بسهولة مع تصميم واضح وتجربة مستخدم أفضل."
+    />
     <style>
       :root {
-        --bg: #f5f8fd;
+        --bg: #f3f7ff;
         --surface: #ffffff;
-        --text: #0e2240;
-        --muted: #60708a;
-        --primary: #0f5fd8;
-        --line: #dbe5f4;
-        --radius: 18px;
+        --surface-soft: #f8fbff;
+        --text: #0f2749;
+        --muted: #5f7495;
+        --primary: #1e66e6;
+        --primary-dark: #0d4fc4;
+        --line: #d6e4fb;
+        --radius-lg: 24px;
+        --radius-md: 16px;
+        --shadow: 0 14px 34px rgba(16, 53, 109, 0.1);
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
         color: var(--text);
-        background: var(--bg);
+        background: radial-gradient(circle at 90% 10%, #e4efff 0%, transparent 34%), var(--bg);
       }
 
-      .container { width: min(1160px, 92%); margin-inline: auto; }
+      .container {
+        width: min(1160px, 92%);
+        margin-inline: auto;
+      }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 50;
-        background: rgba(255,255,255,.9);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(10px);
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px solid #dbe7fb;
+        backdrop-filter: blur(12px);
       }
+
       .topbar-row {
-        min-height: 70px;
+        min-height: 74px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
       }
-      .brand { font-weight: 900; color: #003b8f; font-size: 1.1rem; }
-      .nav-links { display: flex; gap: 1.1rem; align-items: center; }
-      .nav-links a { text-decoration: none; color: #29486f; font-weight: 600; }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 1.15rem;
+        font-weight: 900;
+        color: #003f9f;
+      }
+
+      .brand-badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #0f67f4, #4ca3ff);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(15, 103, 244, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #24496f;
+        font-weight: 700;
+      }
 
       .btn {
         border: 0;
         border-radius: 12px;
-        padding: .7rem 1rem;
+        padding: 0.72rem 1rem;
         font: inherit;
-        font-weight: 700;
+        font-weight: 800;
         cursor: pointer;
         text-decoration: none;
+        transition: 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
-      .btn-primary { background: var(--primary); color: #fff; }
-      .btn-ghost { background: #fff; border: 1px solid #bdd2ef; color: #15457f; }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #3684ff);
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(30, 102, 230, 0.24);
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      }
+
+      .btn-ghost {
+        background: #fff;
+        border: 1px solid #bfd4f7;
+        color: #114680;
+      }
 
       header {
-        background: linear-gradient(180deg, #edf5ff 0%, #f5f8fd 80%);
-        padding: 1.2rem 0 2.4rem;
+        padding: 1.2rem 0 2.2rem;
       }
 
       .hero {
         position: relative;
-        border-radius: 28px;
         overflow: hidden;
-        min-height: 460px;
-        border: 1px solid #c7d8f2;
-        box-shadow: 0 26px 48px rgba(5, 40, 90, .12);
+        border-radius: 30px;
+        min-height: 490px;
+        border: 1px solid #c8dcfb;
+        box-shadow: 0 26px 48px rgba(5, 40, 90, 0.14);
       }
 
-      .hero-bg {
+      .hero::before {
+        content: "";
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(180deg, rgba(5,20,45,.1), rgba(4,15,35,.58)),
-          url("https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+          linear-gradient(190deg, rgba(9, 30, 67, 0.1) 0%, rgba(4, 15, 35, 0.62) 78%),
+          url("https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1800&q=80")
+            center/cover no-repeat;
       }
 
       .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 1;
         color: #fff;
-        padding: clamp(1.2rem, 4vw, 2.2rem);
+        padding: clamp(1.2rem, 4vw, 2.4rem);
         display: grid;
-        gap: 1.1rem;
+        gap: 1rem;
       }
 
-      .hero h1 { margin: .3rem 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.2; }
-      .hero p { margin: 0; max-width: 650px; color: #dfebff; }
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .chip {
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        background: rgba(255, 255, 255, 0.12);
+        color: #f0f6ff;
+        border-radius: 999px;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.85rem;
+      }
+
+      .hero h1 {
+        margin: 0.2rem 0;
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        line-height: 1.2;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: 670px;
+        color: #e5efff;
+        font-size: 1.05rem;
+      }
 
       .search-panel {
-        margin-top: .7rem;
-        background: #fff;
-        border-radius: 16px;
-        padding: .9rem;
+        margin-top: 0.9rem;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #d2e2ff;
+        border-radius: 18px;
+        padding: 0.9rem;
         display: grid;
-        grid-template-columns: repeat(5, minmax(120px,1fr));
-        gap: .7rem;
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+        gap: 0.72rem;
         color: var(--text);
       }
 
-      label { font-size: .84rem; color: var(--muted); display: grid; gap: .3rem; }
-      input, select {
-        border: 1px solid #ccdbf2;
-        border-radius: 10px;
-        padding: .62rem;
-        font: inherit;
-        background: #fff;
+      label {
+        font-size: 0.84rem;
+        color: var(--muted);
+        display: grid;
+        gap: 0.32rem;
+        font-weight: 600;
       }
 
-      section { padding: 2.3rem 0; }
-      h2 { margin: 0 0 1rem; font-size: clamp(1.45rem, 2.5vw, 2rem); }
+      input,
+      select {
+        border: 1px solid #cbdbf6;
+        border-radius: 10px;
+        padding: 0.62rem;
+        font: inherit;
+        background: #fff;
+        color: var(--text);
+      }
+
+      .stats-grid {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(140px, 1fr));
+        gap: 0.7rem;
+        max-width: 650px;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 14px;
+        padding: 0.62rem 0.7rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.18rem;
+      }
+
+      section {
+        padding: 2.2rem 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: end;
+        margin-bottom: 0.9rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(1.45rem, 2.5vw, 2rem);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+      }
 
       .category-grid,
       .boats-grid,
       .destinations-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: .9rem;
+        gap: 0.9rem;
       }
 
       .card {
         background: var(--surface);
         border: 1px solid var(--line);
-        border-radius: var(--radius);
+        border-radius: var(--radius-md);
         overflow: hidden;
-        box-shadow: 0 10px 24px rgba(11, 39, 77, .07);
+        box-shadow: var(--shadow);
       }
-      .card-body { padding: .9rem; }
-      .card h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
-      .muted { color: var(--muted); margin: 0; }
+
+      .card-body {
+        padding: 0.95rem;
+      }
+
+      .card h3 {
+        margin: 0 0 0.3rem;
+        font-size: 1.06rem;
+      }
+
+      .muted {
+        color: var(--muted);
+        margin: 0;
+      }
 
       .thumb {
         aspect-ratio: 4/3;
@@ -137,42 +291,82 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         object-fit: cover;
       }
 
-      .price-row { display: flex; justify-content: space-between; align-items: center; margin-top: .65rem; }
-      .price { font-weight: 900; color: #0f3f7a; }
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.7rem;
+      }
+
+      .price {
+        font-weight: 900;
+        color: #0f3f7a;
+      }
 
       .app-cta {
         background: linear-gradient(120deg, #0b4cb3, #1e7be9);
         color: #fff;
-        border-radius: 22px;
+        border-radius: var(--radius-lg);
         padding: 1.2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
         flex-wrap: wrap;
+        box-shadow: 0 20px 34px rgba(16, 63, 141, 0.24);
+      }
+
+      .app-cta p {
+        margin: 0.45rem 0 0;
+        color: #deebff;
       }
 
       footer {
         text-align: center;
         color: var(--muted);
-        padding: 2rem 0 3rem;
-        font-size: .95rem;
+        padding: 1.8rem 0 2.8rem;
+        font-size: 0.94rem;
       }
 
-      @media (max-width: 900px) {
-        .search-panel { grid-template-columns: 1fr 1fr; }
+      @media (max-width: 920px) {
+        .search-panel {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          max-width: 280px;
+        }
       }
 
-      @media (max-width: 600px) {
-        .nav-links a:nth-child(-n+3) { display: none; }
-        .search-panel { grid-template-columns: 1fr; }
+      @media (max-width: 640px) {
+        .topbar-row {
+          min-height: 66px;
+        }
+
+        .nav-links a:nth-child(-n + 3) {
+          display: none;
+        }
+
+        .search-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+        }
       }
     </style>
   </head>
   <body>
     <nav class="topbar">
       <div class="container topbar-row">
-        <div class="brand">BoatLink</div>
+        <div class="brand">
+          <span class="brand-badge">⛵</span>
+          <span>BoatLink</span>
+        </div>
         <div class="nav-links">
           <a href="#boats">القوارب</a>
           <a href="#destinations">الوجهات</a>
@@ -185,11 +379,18 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
 
     <header>
       <div class="container hero">
-        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
-          <span>⭐ أكثر من 180,000 عميل يختارون الحجز معنا</span>
-          <h1>اعثر على القارب المثالي لأي رحلة بحرية</h1>
-          <p>واجهة حديثة بنفس روح Getmyboat: بحث سريع، نتائج واضحة، وقوارب موثقة للحجز المباشر في الكويت ودول الخليج.</p>
+          <div class="badge-row">
+            <span class="chip">⭐ 4.9 / 5 تقييم المستخدمين</span>
+            <span class="chip">✅ حجز آمن وفوري</span>
+            <span class="chip">📍 في الكويت والخليج</span>
+          </div>
+
+          <h1>اعثر على القارب المثالي لرحلتك البحرية خلال دقائق</h1>
+          <p>
+            صممنا BoatLink بواجهة أوضح وأسهل: بحث أسرع، بطاقات منظمة، ومعلومات تسعير مباشرة تساعدك
+            تختار بثقة بدون تعقيد.
+          </p>
 
           <form class="search-panel" id="search">
             <label>الموقع
@@ -199,30 +400,50 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
               <input type="date" />
             </label>
             <label>المدة
-              <select><option>4 ساعات</option><option>6 ساعات</option><option>يوم كامل</option></select>
+              <select>
+                <option>4 ساعات</option>
+                <option>6 ساعات</option>
+                <option>يوم كامل</option>
+              </select>
             </label>
             <label>عدد الضيوف
-              <select><option>2-8</option><option>9-15</option><option>16+</option></select>
+              <select>
+                <option>2-8</option>
+                <option>9-15</option>
+                <option>16+</option>
+              </select>
             </label>
             <button class="btn btn-primary" type="button">ابحث الآن</button>
           </form>
+
+          <div class="stats-grid">
+            <div class="stat"><strong>+2,300</strong><span>قارب متاح</span></div>
+            <div class="stat"><strong>+180,000</strong><span>عميل سعيد</span></div>
+            <div class="stat"><strong>34</strong><span>مدينة ساحلية</span></div>
+          </div>
         </div>
       </div>
     </header>
 
     <main class="container">
       <section id="categories">
-        <h2>تصفح حسب نوع القارب</h2>
+        <div class="section-head">
+          <h2>تصفح حسب نوع القارب</h2>
+          <p>فئات منظمة لتوصلك للخيار المناسب بسرعة.</p>
+        </div>
         <div class="category-grid">
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80" alt="يخت فاخر" /><div class="card-body"><h3>يخوت فاخرة</h3><p class="muted">مناسب للاحتفالات والمناسبات الخاصة.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="قارب صيد" /><div class="card-body"><h3>قوارب صيد</h3><p class="muted">رحلات صيد مزودة بالمعدات الأساسية.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" alt="رحلة عائلية" /><div class="card-body"><h3>رحلات عائلية</h3><p class="muted">قوارب آمنة ومريحة للعائلة.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="أنشطة مائية" /><div class="card-body"><h3>أنشطة مائية</h3><p class="muted">جت سكي، سنوركل، وبرامج بحرية ممتعة.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80" alt="يخت فاخر" /><div class="card-body"><h3>يخوت فاخرة</h3><p class="muted">للاحتفالات والرحلات الخاصة بمستوى راقٍ.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=900&q=80" alt="قارب صيد" /><div class="card-body"><h3>قوارب صيد</h3><p class="muted">رحلات صيد مجهزة بكل الأساسيات البحرية.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" alt="رحلة عائلية" /><div class="card-body"><h3>رحلات عائلية</h3><p class="muted">خيارات آمنة ومريحة لجميع أفراد العائلة.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="أنشطة مائية" /><div class="card-body"><h3>أنشطة مائية</h3><p class="muted">جت سكي، سنوركل، وبرامج بحرية متنوعة.</p></div></article>
         </div>
       </section>
 
       <section id="boats">
-        <h2>قوارب مميزة للحجز الفوري</h2>
+        <div class="section-head">
+          <h2>قوارب مميزة للحجز الفوري</h2>
+          <p>أسعار واضحة وتقييمات حقيقية قبل الحجز.</p>
+        </div>
         <div class="boats-grid">
           <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?auto=format&fit=crop&w=1000&q=80" alt="يخت 42 قدم" /><div class="card-body"><h3>يخت 42 قدم • مارينا</h3><p class="muted">4.9 ★ (112 تقييم) • حتى 12 ضيف</p><div class="price-row"><span class="price">من 120 د.ك / ساعة</span><a class="btn btn-ghost" href="#">عرض التفاصيل</a></div></div></article>
           <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1000&q=80" alt="قارب عائلي" /><div class="card-body"><h3>قارب عائلي • السالمية</h3><p class="muted">4.8 ★ (73 تقييم) • حتى 8 ضيوف</p><div class="price-row"><span class="price">من 85 د.ك / ساعة</span><a class="btn btn-ghost" href="#">عرض التفاصيل</a></div></div></article>
@@ -231,11 +452,14 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
       </section>
 
       <section id="destinations">
-        <h2>وجهات شائعة</h2>
+        <div class="section-head">
+          <h2>وجهات شائعة</h2>
+          <p>أكثر الوجهات طلبًا لعشاق البحر.</p>
+        </div>
         <div class="destinations-grid">
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=900&q=80" alt="السالمية" /><div class="card-body"><h3>السالمية</h3><p class="muted">أفضل الرحلات القصيرة وغروب الشمس.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80" alt="مارينا" /><div class="card-body"><h3>مارينا</h3><p class="muted">قوارب فاخرة وخيارات VIP.</p></div></article>
-          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80" alt="الخيران" /><div class="card-body"><h3>الخيران</h3><p class="muted">جلسات بحرية هادئة ورحلات يوم كامل.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=900&q=80" alt="السالمية" /><div class="card-body"><h3>السالمية</h3><p class="muted">رحلات قصيرة مثالية للغروب.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=900&q=80" alt="مارينا" /><div class="card-body"><h3>مارينا</h3><p class="muted">خيارات فاخرة وتجارب VIP.</p></div></article>
+          <article class="card"><img class="thumb" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80" alt="الخيران" /><div class="card-body"><h3>الخيران</h3><p class="muted">هدوء البحر ورحلات اليوم الكامل.</p></div></article>
         </div>
       </section>
 
@@ -243,7 +467,7 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
         <div class="app-cta">
           <div>
             <h2>نزّل تطبيق BoatLink</h2>
-            <p>احجز بسرعة، تحدث مع المالك مباشرة، وادفع بأمان — تجربة قريبة جدًا من منصات الحجز العالمية.</p>
+            <p>احجز أسرع، تحدث مع المالك مباشرة، وادفع بأمان في تجربة عربية احترافية.</p>
           </div>
           <div>
             <a class="btn btn-ghost" href="#">App Store</a>
@@ -253,6 +477,6 @@ git commit -m "update" curl http://localhost:3000<!doctype html> <html lang="ar"
       </section>
     </main>
 
-    <footer>BoatLink © 2026 — واجهة Landing مستوحاة من Getmyboat.</footer>
+    <footer>BoatLink © 2026 — تصميم أوضح وتجربة استخدام أفضل.</footer>
   </body>
 </html>
